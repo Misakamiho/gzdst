@@ -5,25 +5,27 @@
       <el-form
         :model="loginForm"
         :rules="rules"
-        ref="ruleForm"
+        ref="loginForm"
         class="demo-ruleForm"
       >
         <el-form-item prop="username">
           <el-input
           v-model="loginForm.username"
           placeholder="请输入用户名"
-          prefix-icon="myicon myicon-user"></el-input>
+          prefix-icon="myicon myicon-user"
+          clearable
+          ></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input
           v-model="loginForm.password"
           placeholder="请输入密码"
-          prefix-icon="myicon myicon-user"
+          prefix-icon="myicon myicon-key"
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')" class="login-btn"
-            >登录</el-button
+          <el-button type="primary" @click="submitForm" class="login-btn"
+          >登录</el-button
           >
         </el-form-item>
       </el-form>
@@ -32,6 +34,7 @@
 </template>
 
 <script>
+import { login } from '@/api/users_api.js'
 export default {
   data () {
     return {
@@ -52,13 +55,34 @@ export default {
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
           {
-            min: 8,
+            min: 4,
             max: 16,
-            message: '密码长度在 8 到 16 个字符',
+            message: '密码长度在 4 到 16 个字符',
             trigger: 'blur'
           }
         ]
       }
+    }
+  },
+  methods: {
+    submitForm () {
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          login(this.loginForm).then((result) => {
+            if (result.data.code === '200') {
+              this.$message.success(`恭喜你，${result.data.msg}`)
+            } else if (result.data.msg === '密码错误') {
+              this.$message.error(`很抱歉， ${result.data.msg}`)
+            } else {
+              this.$message.error(`很抱歉， ${result.data.msg}`)
+            }
+          }).catch(() => {
+            this.$message.error('很抱歉，服务器未开启')
+          })
+        } else {
+          this.$message.error('账号密码错误请重新输入')
+        }
+      })
     }
   }
 }
