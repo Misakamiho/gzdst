@@ -4,7 +4,7 @@ const bodyparser = require('body-parser')
 const app = express();
 
 app.listen(1234, () => {
-  console.log("http://127.0.0.1:1234");
+  console.log("http://192.168.31.119 :1234");
 });
 
 app.use(bodyparser.urlencoded({extended:false}))

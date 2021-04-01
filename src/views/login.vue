@@ -71,6 +71,7 @@ export default {
         if (valid) {
           login(this.loginForm).then((result) => {
             if (result.data.code === '200') {
+              localStorage.setItem('islogin', 'true')
               this.$router.push({ name: 'home' })
             } else if (result.data.msg === '密码错误') {
               this.$message.error(`很抱歉， ${result.data.msg}`)

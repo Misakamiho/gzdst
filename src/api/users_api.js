@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://127.0.0.1:1234/'
+axios.defaults.baseURL = 'http://192.168.31.119:1234/'
 
 export const login = (data) => {
   return axios({
