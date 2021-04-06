@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 // 引入组件
 import Login from '@/views/login.vue'
 import Home from '@/views/home.vue'
-import Hello from '@/views/hello.vue'
 import Data from '@/views/data.vue'
 
 Vue.use(VueRouter)
@@ -23,13 +22,8 @@ var router = new VueRouter({
       name: 'home',
       path: '/home',
       component: Home,
-      redirect: { name: 'hello' },
+      redirect: { name: 'data' },
       children: [
-        {
-          name: 'hello',
-          path: 'hello',
-          component: Hello
-        },
         {
           name: 'data',
           path: 'data',
