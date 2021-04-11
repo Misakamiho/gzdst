@@ -3,7 +3,7 @@
     <el-container>
       <el-aside width="200px" class="aside">
         <div class="logo">帝</div>
-        <el-menu unique-opened="true" default-active="1" class="el-menu-vertical-demo" background-color="#545c64"
+        <el-menu :unique-opened="true" default-active="1" class="el-menu-vertical-demo" background-color="#545c64"
           text-color="#fff" active-text-color="#ffd04b">
           <el-menu-item index="1" @click='cangku'>
             <i class="el-icon-menu"></i>

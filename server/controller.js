@@ -1,7 +1,7 @@
 const model = require('./model')
 
 module.exports = {
-  getuserdata (req, res) {
+  getuserdata(req, res) {
     model.getuser((err, result) => {
       if (err) console.error(err)
       var data = JSON.parse(result)
@@ -19,6 +19,12 @@ module.exports = {
         }
       }
       res.send(obj)
+    })
+  },
+  getgoodsdata(req, res) { 
+    model.getgoods((err,result)=>{
+      if(err) throw err;
+      res.send(result);
     })
   }
 }

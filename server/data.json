@@ -1,5 +1,18 @@
-[
-    {
-        
-    }
+[{
+        "names": "商品1",
+        "numbers": 200,
+        "prices": 100
+      }, {
+        "names": "商品2",
+        "numbers": 100,
+        "prices": 100
+      }, {
+        "names": "商品3",
+        "numbers": 50,
+        "prices": 100
+      }, {
+        "names": "商品4",
+        "numbers": 18,
+        "prices": 100
+      }
 ]
